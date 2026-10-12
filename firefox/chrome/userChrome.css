@@ -33,6 +33,7 @@
   --general-border-radius: 0px !important;
   --menupopup-border-radius: 0px !important;
   --urlbar-background-overhang-open: 0px !important;
+  --sidebar-width: 205px !important;
 }
 
 /* Global reset for every chrome element */
@@ -137,6 +138,7 @@ notification-message,
    Negative = nudge up, positive = nudge down. -2px fixes the observed 2px step. */
 #sidebar-box {
   --sb-nudge: -2px;
+  width: var(--sidebar-width) !important;
 }
 
 #sidebar-box,
@@ -149,6 +151,12 @@ notification-message,
 /* Hide back and forward navigation buttons */
 #back-button,
 #forward-button {
+  display: none !important;
+}
+
+/* Hide tab and urlbar loading spinner / throbber */
+.tab-throbber,
+#urlbar-throbber {
   display: none !important;
 }
 
@@ -179,19 +187,39 @@ toolbarspring,
   box-shadow: none !important;
 }
 
-/* Truly center the URL bar across the full screen/navbar (50/50 balance) */
-#urlbar-container {
-  position: absolute !important;
-  left: calc(50% - 360px) !important;
-  width: 720px !important;
-  max-width: 720px !important;
-  height: 32px !important;
-  top: calc(50% - 16px) !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  display: flex !important;
-  align-items: center !important;
-  z-index: 10 !important;
+/* Fullscreen / wide displays (>= 1200px): center 720px bar across screen (50/50 balance) */
+@media (min-width: 1200px) {
+  #urlbar-container {
+    position: absolute !important;
+    left: calc(50% - 360px) !important;
+    width: 720px !important;
+    max-width: 720px !important;
+    height: 32px !important;
+    top: calc(50% - 16px) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    z-index: 10 !important;
+  }
+}
+
+/* Tiled / narrow split-window (< 1200px): fluid flex between Sidebery & right tools */
+@media (max-width: 1199px) {
+  #urlbar-container {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: auto !important;
+    max-width: none !important;
+    flex: 1 1 auto !important;
+    margin-inline-start: calc(var(--sidebar-width, 205px) + 8px) !important;
+    margin-inline-end: 12px !important;
+    height: 32px !important;
+    display: flex !important;
+    align-items: center !important;
+    z-index: 10 !important;
+  }
 }
 
 #urlbar {
@@ -306,8 +334,38 @@ toolbarspring,
   background: transparent !important;
 }
 
+/* Ensure shadow DOM background inside moz-button evaluates to transparent in all states */
+#urlbar,
+.searchmode-switcher {
+  --button-background-color: transparent !important;
+  --button-background-color-hover: transparent !important;
+  --button-background-color-active: transparent !important;
+  --button-background-color-selected: transparent !important;
+  --button-background-color-muted: transparent !important;
+  --button-background-color-muted-hover: transparent !important;
+  --button-background-color-muted-active: transparent !important;
+  --button-background-color-muted-selected: transparent !important;
+  --button-background-color-ghost: transparent !important;
+  --button-background-color-ghost-hover: transparent !important;
+  --button-background-color-toolbar: transparent !important;
+  --button-background-color-toolbar-hover: transparent !important;
+  --button-border-color: transparent !important;
+  --button-border-color-hover: transparent !important;
+  --button-border-color-muted: transparent !important;
+  --button-border-color-muted-hover: transparent !important;
+  --button-border: none !important;
+  --button-box-shadow: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
 .searchmode-switcher::part(button),
+.searchmode-switcher:hover::part(button),
+.searchmode-switcher:active::part(button),
 .searchmode-switcher-content,
+.searchmode-switcher:hover .searchmode-switcher-content,
 #urlbar-search-mode-indicator,
 #urlbar-search-mode-indicator-title,
 #urlbar-search-mode-indicator-close {
@@ -320,8 +378,16 @@ toolbarspring,
   outline: none !important;
 }
 
-.searchmode-switcher:hover::part(button) {
-  background: color-mix(in srgb, var(--toolbar-fg, currentColor) 8%, transparent) !important;
+.searchmode-switcher:hover,
+.searchmode-switcher:active,
+.searchmode-switcher:focus,
+.searchmode-switcher[open],
+.searchmode-switcher[aria-expanded="true"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
 }
 
 .urlbar-input-container,
