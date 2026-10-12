@@ -29,7 +29,6 @@
 | [`dict-cli/`](./dict-cli) | **dict** | Zero-dependency lightning-fast terminal dictionary with offline cache, IPA phonetics, suggestions, and audio. | Node.js (Vanilla) |
 | [`cmatrix-noctalia/`](./cmatrix-noctalia) | **cmatrix-noctalia** | Real-time desktop palette integration wrapper using terminal OSC 4 color remapping for `cmatrix`. | Bash / Template |
 | [`lutgen/`](./lutgen) | **lutgen-zsh** | Interactive wallpaper recoloring utility with fzf multi-palette selector, Kitty graphics preview, and 40 custom palettes. | Zsh / Rust CLI |
-| [`noctalia-backup/`](./noctalia-backup) | **Noctalia Backup** | Snapshot of core Noctalia v5 config, settings overrides, custom templates, 50+ custom palettes, and sync script. | TOML / Shell |
 
 ---
 
@@ -88,13 +87,6 @@ lutgen ~/Pictures/wallpapers
 ```
 - Recolor wallpapers into 40+ Noctalia-matched color palettes.
 - Multi-select palettes via `Tab` in `fzf` with non-destructive sequential naming (`<palette>-1.png`, `<palette>-2.png`).
-
-### 🛡️ 6. [Noctalia Backup](./noctalia-backup)
-```bash
-cd noctalia-backup
-./sync.sh            # Pulls live ~/.config/noctalia and ~/.local/state/noctalia
-```
-- Complete snapshot of shell bars, dock, OSD, notification filters, weblauncher bookmarks, and 50+ custom palettes.
 
 ---
 

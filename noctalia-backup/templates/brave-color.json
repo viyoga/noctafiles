@@ -1,4 +1,0 @@
-{
-  "BrowserThemeColor": "{{ colors.surface.default.hex }}",
-  "BrowserColorScheme": "{{ mode }}"
-}

@@ -224,5 +224,5 @@ Type any of the following prefixes into the search prompt:
 - `!w <query>` ➔ Search Wikipedia
 - `!m <query>` ➔ Search Google Maps
 - `!c <query>` ➔ Search Chess.com
-- `!k` ➔ Open Monkeytype
+- `!loc <lat> <lon>` ➔ Set custom weather coordinates locally (e.g., `!loc 40.7128 -74.0060`)
 - `<plain text>` ➔ Fallback search via Google / configured engine

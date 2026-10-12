@@ -376,8 +376,9 @@
         }
       }
 
-      const lat = parseFloat(localStorage.getItem('sonder_weather_lat')) || 19.4389;
-      const lon = parseFloat(localStorage.getItem('sonder_weather_lon')) || 84.8731;
+      // Weather location coordinates (fallback: London; configure via !loc <lat> <lon> or localStorage)
+      const lat = parseFloat(localStorage.getItem('sonder_weather_lat')) || 51.5074;
+      const lon = parseFloat(localStorage.getItem('sonder_weather_lon')) || -0.1278;
 
       const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m&hourly=temperature_2m,weather_code,uv_index&timezone=auto&forecast_days=2`;
       const aqiUrl = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&current=us_aqi`;
@@ -576,8 +577,26 @@
     const q = query.trim();
     if (!q) return;
 
-    // Check for bang match
     const lower = q.toLowerCase();
+
+    // Custom location command: !loc <lat> <lon>
+    if (lower.startsWith('!loc ') || lower.startsWith('!coords ')) {
+      const parts = q.split(/\s+/).slice(1);
+      if (parts.length >= 2) {
+        const latVal = parseFloat(parts[0]);
+        const lonVal = parseFloat(parts[1]);
+        if (!isNaN(latVal) && !isNaN(lonVal)) {
+          localStorage.setItem('sonder_weather_lat', String(latVal));
+          localStorage.setItem('sonder_weather_lon', String(lonVal));
+          localStorage.removeItem('sonder_weather_cache');
+          fetchLiveWeather();
+          closeSearch();
+          return;
+        }
+      }
+    }
+
+    // Check for bang match
     for (const [bang, target] of Object.entries(BANGS)) {
       if (lower === bang) {
         window.location.href = target.home;

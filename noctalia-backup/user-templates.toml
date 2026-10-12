@@ -1,4 +1,0 @@
-[templates.spicetify-text]
-input_path = "$XDG_CONFIG_HOME/noctalia/templates/spicetify-text.ini"
-output_path = "$XDG_CONFIG_HOME/spicetify/Themes/text/color.ini"
-post_hook = "spicetify -q apply --no-restart"

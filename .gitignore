@@ -16,3 +16,6 @@ __pycache__/
 *.log
 .cache/
 node_modules/
+
+# Private system backup (hosted in private repo)
+noctalia-backup/
