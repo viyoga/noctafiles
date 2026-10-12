@@ -306,9 +306,22 @@ toolbarspring,
   background: transparent !important;
 }
 
-.searchmode-switcher::part(button) {
+.searchmode-switcher::part(button),
+.searchmode-switcher-content,
+#urlbar-search-mode-indicator,
+#urlbar-search-mode-indicator-title,
+#urlbar-search-mode-indicator-close {
   height: auto !important;
   min-height: auto !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.searchmode-switcher:hover::part(button) {
+  background: color-mix(in srgb, var(--toolbar-fg, currentColor) 8%, transparent) !important;
 }
 
 .urlbar-input-container,
