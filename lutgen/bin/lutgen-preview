@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 file="$1"
 file="${file/#\~/$HOME}"
-[[ "$file" != /* ]] && file="$HOME/Pictures/$file"
+if [[ "$file" != /* ]]; then
+    if [[ -f "$HOME/Pictures/noctalia-walls/$file" ]]; then
+        file="$HOME/Pictures/noctalia-walls/$file"
+    else
+        file="$HOME/Pictures/$file"
+    fi
+fi
 
 [[ ! -f "$file" ]] && exit 0
 

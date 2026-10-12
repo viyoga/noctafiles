@@ -1,11 +1,6 @@
 # ==============================================================================
-#  lutgen-zsh — Interactive Wallpaper Recoloring Utility for Zsh
+#  Lutgen Interactive Wallpaper Recoloring Utility
 # ==============================================================================
-
-# Add bundled helper scripts to PATH
-0="${${ZERO:-${0:#$ZSH_ARGZERO}}:-${(%):-%N}}"
-0="${${(M)0:#/*}:-$PWD/$0}"
-[[ -d "${0:h}/bin" ]] && path=("${0:h}/bin" $path)
 
 _lutgen_resolve_target() {
     local target="$1"
@@ -22,10 +17,10 @@ _lutgen_resolve_target() {
 
     if [[ -e "$target" ]]; then
         print -r -- "$target"
+    elif [[ -e "$HOME/Pictures/noctalia-walls/$target" ]]; then
+        print -r -- "$HOME/Pictures/noctalia-walls/$target"
     elif [[ -e "$HOME/Pictures/$target" ]]; then
         print -r -- "$HOME/Pictures/$target"
-    elif [[ -e "${LUTGEN_OUTPUT_DIR:-$HOME/Pictures/noctalia-walls}/$target" ]]; then
-        print -r -- "${LUTGEN_OUTPUT_DIR:-$HOME/Pictures/noctalia-walls}/$target"
     else
         print -r -- "$target"
     fi
@@ -42,26 +37,9 @@ lutgen() {
         esac
     fi
 
-    # Configurable directories
-    local palettes_dir="${LUTGEN_PALETTES_DIR:-${XDG_CONFIG_HOME:-$HOME/.config}/lutgen}"
-    # Fallback to repo bundled palettes if local config directory has none
-    if [[ ! -d "$palettes_dir" || -z "$(ls -A "$palettes_dir"/*.txt 2>/dev/null)" ]]; then
-        if [[ -d "${0:h}/palettes" ]]; then
-            palettes_dir="${0:h}/palettes"
-        fi
-    fi
-
-    local output_base="${LUTGEN_OUTPUT_DIR:-}"
-    if [[ -z "$output_base" ]]; then
-        if [[ -d "$HOME/Pictures/noctalia-walls" ]]; then
-            output_base="$HOME/Pictures/noctalia-walls"
-        elif [[ -d "$HOME/Pictures/wallpapers" ]]; then
-            output_base="$HOME/Pictures/wallpapers"
-        else
-            output_base="$HOME/Pictures/recolored"
-        fi
-    fi
-    local pictures_dir="${LUTGEN_PICTURES_DIR:-$HOME/Pictures}"
+    local palettes_dir="${XDG_CONFIG_HOME:-$HOME/.config}/lutgen"
+    local output_base="$HOME/Pictures/noctalia-walls"
+    local pictures_dir="$HOME/Pictures/noctalia-walls"
 
     if [[ ! -d "$palettes_dir" ]]; then
         echo -e "\033[1;31m✘ Palettes directory not found:\033[0m $palettes_dir"
