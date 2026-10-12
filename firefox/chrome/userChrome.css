@@ -1,9 +1,12 @@
+@import "noctalia-colors.css";
+
 /* ══════════════════════════════════════════════════════════════════
    LIBREWOLF CUSTOM RICE
    1. Universal 0px Square Corners (Pywalfox cannot do border-radius)
    2. Clean URL Bar (Hide extension name/pill on startpage)
    3. Clean Sidebery Integration (Collapse native tabs & sidebar header)
    4. Navbar Layout & Centered URL Bar (with Megabar alignment lock)
+   5. Dynamic Pywalfox Theming for All Dropdowns, Menus & Popups
    
    * All colors, themes, backgrounds, popups, and toolbar styles
      are dynamically managed by Pywalfox via browser.theme API.
@@ -318,3 +321,209 @@ toolbarspring,
 #urlbar:not([focused]) #urlbar-input {
   text-align: center !important;
 }
+
+/* ── 5. Dynamic Pywalfox Dropdowns, Context Menus, Popups & Panels ── */
+
+/* 5.1 Base Context Menus & Submenus */
+menupopup,
+#contentAreaContextMenu,
+#main-window menupopup,
+panel[type="autocomplete-richlistbox"] {
+  --panel-background: var(--arrowpanel-background, var(--toolbar-bgcolor)) !important;
+  --panel-color: var(--arrowpanel-color, var(--toolbar-color)) !important;
+  --panel-border-color: var(--arrowpanel-border-color, var(--chrome-content-separator-color, rgba(255, 255, 255, 0.12))) !important;
+  --panel-separator-color: var(--panel-separator-color, var(--chrome-content-separator-color, rgba(255, 255, 255, 0.12))) !important;
+  --panel-item-hover-bgcolor: var(--button-background-color-menu-hover, var(--toolbarbutton-hover-background, rgba(255, 255, 255, 0.1))) !important;
+  --panel-item-hover-color: var(--arrowpanel-color, var(--toolbar-color)) !important;
+  --panel-item-active-bgcolor: var(--button-background-color-menu-active, var(--toolbarbutton-active-background, rgba(255, 255, 255, 0.15))) !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background-color: var(--arrowpanel-background, var(--toolbar-bgcolor)) !important;
+  color: var(--arrowpanel-color, var(--toolbar-color)) !important;
+  border: 1px solid var(--arrowpanel-border-color, var(--chrome-content-separator-color, rgba(255, 255, 255, 0.15))) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+  padding: 4px 0 !important;
+}
+
+menupopup::part(content),
+menupopup > .menupopup-arrowscrollbox {
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background-color: var(--arrowpanel-background, var(--toolbar-bgcolor)) !important;
+  color: var(--arrowpanel-color, var(--toolbar-color)) !important;
+}
+
+/* 5.2 Menu Items & Hover States */
+menupopup menuitem,
+menupopup menu,
+menuitem,
+menu {
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background-color: transparent !important;
+  color: var(--arrowpanel-color, var(--toolbar-color)) !important;
+  min-height: 24px !important;
+  padding-block: 4px !important;
+  padding-inline: 10px !important;
+}
+
+menupopup menuitem:is(:hover, [_moz-menuactive="true"], [selected="true"]):not([disabled="true"]),
+menupopup menu:is(:hover, [_moz-menuactive="true"], [selected="true"]):not([disabled="true"]),
+menuitem:is(:hover, [_moz-menuactive="true"], [selected="true"]):not([disabled="true"]),
+menu:is(:hover, [_moz-menuactive="true"], [selected="true"]):not([disabled="true"]) {
+  background-color: var(--panel-item-hover-bgcolor, var(--button-background-color-menu-hover, var(--toolbarbutton-hover-background))) !important;
+  color: var(--panel-item-hover-color, var(--arrowpanel-color, var(--toolbar-color))) !important;
+}
+
+menupopup menuitem[disabled="true"],
+menupopup menu[disabled="true"],
+menuitem[disabled="true"],
+menu[disabled="true"] {
+  opacity: 0.45 !important;
+  color: var(--arrowpanel-color, var(--toolbar-color)) !important;
+}
+
+/* 5.3 Context Menu Navigation Bar (Back, Forward, Reload, Star) */
+#context-navigation {
+  background-color: var(--arrowpanel-background, var(--toolbar-bgcolor)) !important;
+  padding: 2px 4px !important;
+  margin: 0 !important;
+  border-bottom: 1px solid var(--panel-separator-color, var(--chrome-content-separator-color, rgba(255, 255, 255, 0.12))) !important;
+}
+
+#context-navigation > .menuitem-iconic {
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background-color: transparent !important;
+  padding: 4px 8px !important;
+}
+
+#context-navigation > .menuitem-iconic:is(:hover, [_moz-menuactive="true"]):not([disabled="true"]) {
+  background-color: var(--panel-item-hover-bgcolor, var(--button-background-color-menu-hover, var(--toolbarbutton-hover-background))) !important;
+}
+
+#context-navigation > .menuitem-iconic > .menu-iconic-icon {
+  fill: var(--toolbarbutton-icon-fill, var(--arrowpanel-color, var(--toolbar-color))) !important;
+}
+
+/* 5.4 Menu Separators */
+menupopup menuseparator,
+menuseparator {
+  -moz-appearance: none !important;
+  appearance: none !important;
+  border-top: 1px solid var(--panel-separator-color, var(--chrome-content-separator-color, rgba(255, 255, 255, 0.12))) !important;
+  border-bottom: none !important;
+  background: transparent !important;
+  margin: 4px 6px !important;
+  padding: 0 !important;
+}
+
+/* Submenu Arrow Indicators */
+.menu-right {
+  fill: var(--toolbarbutton-icon-fill, var(--arrowpanel-color, var(--toolbar-color))) !important;
+}
+
+/* 5.5 Panels (Hamburger App Menu, Downloads, Extensions, History) */
+panel,
+panelview,
+.panel-subview-body,
+.panel-arrowcontent,
+.panel-header,
+.panel-footer {
+  background-color: var(--arrowpanel-background, var(--toolbar-bgcolor)) !important;
+  color: var(--arrowpanel-color, var(--toolbar-color)) !important;
+}
+
+panel::part(content) {
+  background-color: var(--arrowpanel-background, var(--toolbar-bgcolor)) !important;
+  color: var(--arrowpanel-color, var(--toolbar-color)) !important;
+  border: 1px solid var(--arrowpanel-border-color, var(--chrome-content-separator-color, rgba(255, 255, 255, 0.15))) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+}
+
+toolbarbutton.subviewbutton:not([disabled="true"]) {
+  color: var(--arrowpanel-color, var(--toolbar-color)) !important;
+}
+
+toolbarbutton.subviewbutton:is(:hover, [_moz-menuactive="true"]):not([disabled="true"]) {
+  background-color: var(--panel-item-hover-bgcolor, var(--button-background-color-menu-hover, var(--toolbarbutton-hover-background))) !important;
+  color: var(--panel-item-hover-color, var(--arrowpanel-color, var(--toolbar-color))) !important;
+}
+
+toolbarseparator,
+.panel-subview-body toolbarseparator {
+  border-top: 1px solid var(--panel-separator-color, var(--chrome-content-separator-color, rgba(255, 255, 255, 0.12))) !important;
+  border-bottom: none !important;
+  background: transparent !important;
+  margin: 4px 0 !important;
+}
+
+/* 5.6 Dropdown Select Boxes & Menulists */
+menulist {
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background-color: var(--toolbar-field-background-color, var(--toolbar-bgcolor)) !important;
+  color: var(--toolbar-field-color, var(--toolbar-color)) !important;
+  border: 1px solid var(--toolbar-field-border-color, rgba(255, 255, 255, 0.15)) !important;
+  padding: 4px 8px !important;
+}
+
+menulist:hover {
+  background-color: var(--toolbarbutton-hover-background, var(--toolbar-field-background-color)) !important;
+}
+
+menulist dropmarker,
+.menulist-dropmarker {
+  fill: var(--toolbarbutton-icon-fill, var(--toolbar-color)) !important;
+}
+
+/* 5.7 URL Bar Autocomplete Dropdown Rows */
+.urlbarView {
+  background-color: var(--arrowpanel-background, var(--toolbar-bgcolor)) !important;
+  color: var(--toolbar-color) !important;
+  border: 1px solid var(--arrowpanel-border-color, var(--chrome-content-separator-color, rgba(255, 255, 255, 0.15))) !important;
+}
+
+.urlbarView-row {
+  color: var(--toolbar-color) !important;
+}
+
+.urlbarView-row:is([selected], :hover) {
+  background-color: var(--panel-item-hover-bgcolor, var(--toolbarbutton-hover-background)) !important;
+  color: var(--toolbar-color) !important;
+}
+
+.urlbarView-row[selected] .urlbarView-title,
+.urlbarView-row:hover .urlbarView-title {
+  color: var(--toolbar-color) !important;
+}
+
+.urlbarView-action,
+.urlbarView-typeicon {
+  color: var(--toolbarbutton-icon-fill, var(--toolbar-color)) !important;
+  fill: var(--toolbarbutton-icon-fill, var(--toolbar-color)) !important;
+}
+
+/* 5.8 Tooltips */
+tooltip {
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background-color: var(--arrowpanel-background, var(--toolbar-bgcolor)) !important;
+  color: var(--arrowpanel-color, var(--toolbar-color)) !important;
+  border: 1px solid var(--arrowpanel-border-color, rgba(255, 255, 255, 0.2)) !important;
+  padding: 4px 8px !important;
+}
+
+/* 5.9 Findbar */
+findbar {
+  background-color: var(--toolbar-bgcolor) !important;
+  color: var(--toolbar-color) !important;
+  border-top: 1px solid var(--chrome-content-separator-color, rgba(255, 255, 255, 0.12)) !important;
+}
+
+.findbar-textbox {
+  background-color: var(--toolbar-field-background-color) !important;
+  color: var(--toolbar-field-color) !important;
+  border: 1px solid var(--toolbar-field-border-color, rgba(255, 255, 255, 0.15)) !important;
+}
+
