@@ -133,9 +133,15 @@ notification-message,
 }
 
 /* Elevate sidebar to top bar level into empty left space */
+/* --sb-nudge: tweak this value to align Sidebery's panel border with the navbar border.
+   Negative = nudge up, positive = nudge down. -2px fixes the observed 2px step. */
+#sidebar-box {
+  --sb-nudge: -2px;
+}
+
 #sidebar-box,
 #sidebar-main {
-  margin-top: -36px !important;
+  margin-top: calc(-36px + var(--sb-nudge, 0px)) !important;
   z-index: 10 !important;
 }
 
