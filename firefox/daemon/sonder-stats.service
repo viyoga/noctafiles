@@ -1,0 +1,12 @@
+[Unit]
+Description=Sonder startpage system stats server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 %h/.local/bin/sonder-stats-server.py
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target

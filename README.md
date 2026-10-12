@@ -24,7 +24,7 @@
 
 | Folder | Name | Description | Language / Stack |
 | :--- | :--- | :--- | :--- |
-| [`firefox/`](./firefox) | **Firefox / LibreWolf Rice** | Pure 0px square corners, centered URL bar, elevated Sidebery integration, and native 0ms Noctalia palette sync. | CSS / Template |
+| [`firefox/`](./firefox) | **Firefox & Sonder Suite** | Pure 0px square corners, centered URL bar, elevated Sidebery, and the **Sonder Startpage** with live stats & 0ms Noctalia hot-reload. | CSS / WebExtension / Py |
 | [`fastfetch/`](./fastfetch) | **Fastfetch Rice** | Dynamic category switcher, random logo selector, Pacman chasing ghosts bar, and categorized multi-color ASCII arts. | Bash / JSONC |
 | [`dict-cli/`](./dict-cli) | **dict** | Zero-dependency lightning-fast terminal dictionary with offline cache, IPA phonetics, suggestions, and audio. | Node.js (Vanilla) |
 | [`cmatrix-noctalia/`](./cmatrix-noctalia) | **cmatrix-noctalia** | Real-time desktop palette integration wrapper using terminal OSC 4 color remapping for `cmatrix`. | Bash / Template |
@@ -35,7 +35,7 @@
 
 ## 🚀 Component Highlights & Quick Starts
 
-### 🦊 1. [Firefox / LibreWolf Rice](./firefox)
+### 🦊 1. [Firefox & Sonder Newtab Suite](./firefox)
 ```bash
 cd firefox
 ./install.sh
@@ -43,6 +43,7 @@ cd firefox
 - **0ms Cold Boot Theme Sync:** Uses Noctalia's user template engine (`librewolf.css`) to render `noctalia-colors.css` into browser profile `chrome/`.
 - **Universal 0px Corners:** Strict rectangular aesthetic across all browser chrome elements.
 - **Sidebery Elevation:** Pulls `#sidebar-box` up by 36px so container and settings icons sit flush on the top navbar, with tabs starting cleanly at the content line.
+- **🌌 Sonder Newtab Extension:** Minimalist dashboard with 24h clock, weather, keyboard-navigable tasks (`Shift + T`), search bangs (`!yt`, `!gh`), real-time CPU/RAM/Network stats, and **live 0ms theme hot-reloading** without refreshing the tab!
 
 ### ⚡ 2. [Fastfetch Rice](./fastfetch)
 ```bash

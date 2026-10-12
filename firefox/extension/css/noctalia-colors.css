@@ -1,0 +1,31 @@
+:root {
+  --bg: #0d151b;
+  --glow-1: rgba(104, 181, 194, 0.1);
+  --glow-2: rgba(91, 108, 143, 0.09);
+  --text-primary: #d2dee3;
+  --text-secondary: #76909e;
+  --text-dim: #2f3c45;
+  --surface: rgba(16, 26, 33, 0.55);
+  --surface-hover: rgba(20, 33, 42, 0.7);
+  --surface-strong: rgba(27, 44, 56, 0.85);
+  --border: rgba(78, 100, 115, 0.25);
+  --border-strong: rgba(78, 100, 115, 0.45);
+  --danger: #c95964;
+  --bang-color: #68b5c2;
+  --modal-bg: rgba(13, 21, 27, 0.96);
+  --canvas-fade: #0d151b;
+  --canvas-line: rgba(104, 181, 194, 0.05);
+  --canvas-dot: rgba(104, 181, 194, 0.2);
+  --noctalia-primary: #68b5c2;
+  --noctalia-on-primary: #0a1217;
+  --noctalia-secondary: #4b7f94;
+  --noctalia-on-secondary: #0a1217;
+  --noctalia-tertiary: #5b6c8f;
+  --noctalia-error: #c95964;
+  --noctalia-surface: #0c1318;
+  --noctalia-on-surface: #d2dee3;
+  --noctalia-surface-variant: #14212a;
+  --noctalia-primary-dark: #38808c;
+  --noctalia-primary-mid: #4ba7b6;
+  --noctalia-primary-light: #9bced7;
+}
