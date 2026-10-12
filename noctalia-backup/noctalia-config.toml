@@ -277,7 +277,7 @@ enabled = [
 
 [shell]
 app_icon_color = "primary"
-avatar_path = "/home/kabir/Downloads/cropped_circle_image (4)-osaka-jade.png"
+avatar_path = "/home/kabir/Downloads/_ (4).jpeg"
 corner_radius_scale = 0.0
 font_family = "Iosevka NF"
 popup_shadows = false
@@ -456,7 +456,7 @@ post_hook = "spicetify -q apply --no-restart"
 [theme]
 builtin = "Rosé Pine"
 community_palette = "Seoul256 Hard"
-custom_palette = "creamy-forest"
+custom_palette = "penguins-material"
 mode = "dark"
 source = "custom"
 wallpaper_scheme = "soft"
@@ -466,7 +466,6 @@ wallpaper_scheme = "soft"
     community_ids = [
         "opencode",
         "spicetify",
-        "pywalfox-beta4",
         "zen-browser",
         "discord",
         "neovim",
@@ -474,11 +473,29 @@ wallpaper_scheme = "soft"
         "obs",
         "zathura",
         "papirus-icons",
-        "bat"
+        "bat",
+        "pywalfox-beta4"
     ]
     enable_builtin_templates = true
     enable_community_templates = true
-    user_ids = [ "startpage", "serein" ]
+    user_ids = [
+        "spicetify-text",
+        "telegram_bg",
+        "telegram_theme",
+        "startpage",
+        "mist-newtab",
+        "prettyzap",
+        "yazi",
+        "zapfast",
+        "serein",
+        "librewolf",
+        "bibata-cursor"
+    ]
+
+        [theme.templates.user.bibata-cursor]
+        input_path = "$XDG_CONFIG_HOME/noctalia/templates/bibata-cursor.toml"
+        output_path = "$XDG_CONFIG_HOME/noctalia/generated/bibata-cursor.toml"
+        pre_hook = "/home/kabir/.local/bin/generate-bibata-cursor '{{colors.primary.default.hex}}' '{{colors.terminal_background.default.hex}}'"
 
         [theme.templates.user.brave]
         input_path = "$XDG_CONFIG_HOME/noctalia/templates/brave-color.json"
@@ -519,6 +536,11 @@ wallpaper_scheme = "soft"
         input_path = "$XDG_CONFIG_HOME/noctalia/templates/hyprland/hyprland.lua"
         output_path = "$XDG_CONFIG_HOME/hypr/noctalia.lua"
         post_hook = "bash '$XDG_CONFIG_HOME/noctalia/templates/hyprland/apply.sh' apply"
+
+        [theme.templates.user.librewolf]
+        input_path = "$XDG_CONFIG_HOME/noctalia/templates/librewolf.css"
+        output_path = "$XDG_CONFIG_HOME/librewolf/librewolf/7ct2j6ho.default-default/chrome/noctalia-colors.css"
+        pre_hook = "mkdir -p $XDG_CONFIG_HOME/librewolf/librewolf/7ct2j6ho.default-default/chrome"
 
         [theme.templates.user.mist-newtab]
         input_path = "$XDG_CONFIG_HOME/noctalia/templates/mist-newtab.css"
@@ -597,13 +619,13 @@ directory_dark = "/home/kabir/Pictures/noctalia-walls"
 transition = [ "fade", "wipe" ]
 
     [wallpaper.default]
-    path = "/home/kabir/Pictures/noctalia-walls/Zekegk/creamy forest/Oil Paintings/birmingham-museums-trust-Un97RJl6CNg-unsplash.jpg"
+    path = "/home/kabir/Pictures/noctalia-walls/penguins-material/penguins-material-2.png"
 
     [wallpaper.last]
-    path = "/home/kabir/Pictures/noctalia-walls/Zekegk/creamy forest/Oil Paintings/birmingham-museums-trust-Un97RJl6CNg-unsplash.jpg"
+    path = "/home/kabir/Pictures/noctalia-walls/penguins-material/penguins-material-2.png"
 
     [wallpaper.monitors.HDMI-A-1]
-    path = "/home/kabir/Pictures/noctalia-walls/Zekegk/creamy forest/Oil Paintings/birmingham-museums-trust-Un97RJl6CNg-unsplash.jpg"
+    path = "/home/kabir/Pictures/noctalia-walls/penguins-material/penguins-material-2.png"
 
     [[wallpaper.favorite]]
     custom_palette = "bluefish"

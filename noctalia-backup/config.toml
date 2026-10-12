@@ -38,8 +38,8 @@ format = "{:%H:%M | %a %d}"
 enable_builtin_templates = true
 enable_community_templates = true
 builtin_ids = ["kitty", "btop", "cava", "qt", "kcolorscheme"]
-community_ids = ["discord", "zen-browser", "papirus-icons", "neovim", "bat", "obs"]
-user_ids = ["spicetify-text", "telegram_bg", "telegram_theme", "startpage", "mist-newtab", "prettyzap", "yazi", "zapfast", "serein"]
+community_ids = ["discord", "zen-browser", "papirus-icons", "neovim", "bat", "obs", "pywalfox-beta4"]
+user_ids = ["spicetify-text", "telegram_bg", "telegram_theme", "startpage", "mist-newtab", "prettyzap", "yazi", "zapfast", "serein", "librewolf", "bibata-cursor"]
 
 [theme.templates.user.spicetify-text]
 input_path = "$XDG_CONFIG_HOME/noctalia/templates/spicetify-text.ini"
@@ -151,6 +151,19 @@ input_path = "$XDG_CONFIG_HOME/noctalia/templates/sonora-overrides.json"
 output_path = "$XDG_CONFIG_HOME/noctalia/.sonora-overrides.rendered.json"
 pre_hook = "true"
 post_hook = "python3 $XDG_CONFIG_HOME/noctalia/scripts/sonora-theme-merge.py"
+
+[theme.templates.user.librewolf]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/librewolf.css"
+output_path = "$XDG_CONFIG_HOME/librewolf/librewolf/7ct2j6ho.default-default/chrome/noctalia-colors.css"
+pre_hook = "mkdir -p $XDG_CONFIG_HOME/librewolf/librewolf/7ct2j6ho.default-default/chrome"
+
+[theme.templates.user.bibata-cursor]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/bibata-cursor.toml"
+output_path = "$XDG_CONFIG_HOME/noctalia/generated/bibata-cursor.toml"
+pre_hook = "/home/kabir/.local/bin/generate-bibata-cursor '{{colors.primary.default.hex}}' '{{colors.terminal_background.default.hex}}'"
+
+
+
 
 [notification]
 show_app_name = false
