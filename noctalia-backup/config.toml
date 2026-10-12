@@ -269,7 +269,6 @@ exec = """
 
 [hooks]
 colors_changed = "/home/kabir/.config/noctalia/scripts/opencode-reload.sh"
-wallpaper_changed = "noctalia msg theme-mode-set dark"
 
 [shell.screenshot]
 # Region/fullscreen captures flow straight into the annotate tool

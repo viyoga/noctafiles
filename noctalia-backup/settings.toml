@@ -411,13 +411,13 @@ directory_dark = "/home/kabir/Pictures/noctalia-walls"
 transition = [ "fade", "wipe" ]
 
     [wallpaper.default]
-    path = "/home/kabir/Pictures/noctalia-walls/penguins-material/penguins-material-2.png"
+    path = "/home/kabir/Pictures/noctalia-walls/penguins-material/penguins-material-3.png"
 
     [wallpaper.last]
-    path = "/home/kabir/Pictures/noctalia-walls/penguins-material/penguins-material-2.png"
+    path = "/home/kabir/Pictures/noctalia-walls/penguins-material/penguins-material-3.png"
 
     [wallpaper.monitors.HDMI-A-1]
-    path = "/home/kabir/Pictures/noctalia-walls/penguins-material/penguins-material-2.png"
+    path = "/home/kabir/Pictures/noctalia-walls/penguins-material/penguins-material-3.png"
 
     [[wallpaper.favorite]]
     custom_palette = "bluefish"
