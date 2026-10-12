@@ -1,0 +1,48 @@
+/* ══════════════════════════════════════════════════════════════════
+   NOCTALIA DYNAMIC THEME FOR LIBREWOLF (Auto-generated)
+   ══════════════════════════════════════════════════════════════════ */
+:root {
+  /* Palette Tokens */
+  --noctalia-bg: #141615;
+  --noctalia-fg: #d8dad8;
+  --noctalia-fg-muted: #888c89;
+  --noctalia-primary: #aeb2af;
+  --noctalia-on-primary: #141615;
+  --noctalia-surface-low: #191c1a;
+  --noctalia-surface-container: #1f2220;
+  --noctalia-surface-variant: #1f2220;
+  --noctalia-border: rgba(95, 100, 96, 0.2);
+  --noctalia-border-strong: rgba(95, 100, 96, 0.4);
+
+  /* Native Firefox / LibreWolf Theme Engine Baseline (Startup fallbacks, no !important) */
+  --toolbar-bgcolor: #141615;
+  --toolbar-color: #d8dad8;
+  --toolbar-field-background-color: #1f2220;
+  --toolbar-field-color: #d8dad8;
+  --toolbar-field-focus-background-color: #1f2220;
+  --toolbar-field-focus-color: #d8dad8;
+  --toolbar-field-border-color: rgba(95, 100, 96, 0.2);
+  --toolbarbutton-icon-fill: #d8dad8;
+  --toolbarbutton-hover-background: #1f2220;
+  --toolbarbutton-active-background: #292d2a;
+  --chrome-content-separator-color: rgba(95, 100, 96, 0.2);
+  --lwt-accent-color: #141615;
+  --lwt-text-color: #d8dad8;
+  --arrowpanel-background: #141615;
+  --arrowpanel-color: #d8dad8;
+  --arrowpanel-border-color: rgba(95, 100, 96, 0.25);
+  --panel-background-color: #141615;
+  --panel-text-color: #d8dad8;
+  --panel-border-color: rgba(95, 100, 96, 0.25);
+  --panel-background: #141615;
+  --panel-color: #d8dad8;
+  --button-background-color-menu-hover: #1f2220;
+  --button-background-color-menu-active: #292d2a;
+  --button-text-color-menu: #d8dad8;
+  --button-text-color-menu-hover: #d8dad8;
+  --button-icon-fill: #d8dad8;
+  --panel-separator-color: rgba(95, 100, 96, 0.2);
+  --sidebar-background-color: #141615;
+  --sidebar-text-color: #d8dad8;
+  --sidebar-border-color: rgba(95, 100, 96, 0.2);
+}

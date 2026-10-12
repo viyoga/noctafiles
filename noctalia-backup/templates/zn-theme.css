@@ -1,0 +1,13 @@
+/* Noctalia-generated zn theme — do not hand-edit, rerendered on every palette change */
+:root {
+  --z-bg: {{colors.surface.default.hex}};
+  --z-fg: {{colors.on_surface.default.hex}};
+  --z-accent: {{colors.primary.default.hex}};
+  --z-grey-2: {{colors.on_surface_variant.default.hex}};
+  --z-blue: {{colors.terminal_normal_blue.default.hex}};
+  --z-aqua: {{colors.terminal_normal_cyan.default.hex}};
+  --z-green: {{colors.terminal_normal_green.default.hex}};
+  --z-yellow: {{colors.terminal_normal_yellow.default.hex}};
+  --z-purple: {{colors.terminal_normal_magenta.default.hex}};
+  --z-red: {{colors.error.default.hex}};
+}

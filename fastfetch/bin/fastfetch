@@ -1,0 +1,87 @@
+#!/usr/bin/env bash
+
+FASTFETCH_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/fastfetch"
+CACHE_FILE="/tmp/.fastfetch_last_logo_${UID}"
+
+for arg in "$@"; do
+  case "$arg" in
+  -l | --logo | --file | --raw | --data | --kitty | --sixel)
+    exec /usr/bin/fastfetch "$@"
+    ;;
+  esac
+done
+
+TARGET_CATEGORY=""
+FILTERED_ARGS=()
+SHOW_LIST=false
+
+for arg in "$@"; do
+  case "$arg" in
+  --list | -L)
+    SHOW_LIST=true
+    ;;
+  animals | arch | geometry)
+    TARGET_CATEGORY="$arg"
+    ;;
+  --category=* | -c=*)
+    TARGET_CATEGORY="${arg#*=}"
+    ;;
+  *)
+    FILTERED_ARGS+=("$arg")
+    ;;
+  esac
+done
+
+VALID_CATEGORIES=(animals arch geometry)
+
+if [[ "$SHOW_LIST" == "true" ]]; then
+  echo "Fastfetch ASCII Art Categories in $FASTFETCH_DIR:"
+  for cat_name in "${VALID_CATEGORIES[@]}"; do
+    d="$FASTFETCH_DIR/$cat_name"
+    [[ -d "$d" ]] || continue
+    count=$(find "$d" -maxdepth 1 -type f -name "*.txt" | wc -l)
+    echo "  - $cat_name ($count logos)"
+    for f in "$d"/*.txt; do
+      [[ -f "$f" ]] && echo "      • $(basename "$f")"
+    done
+  done
+  exit 0
+fi
+
+SEARCH_DIRS=()
+if [[ -n "$TARGET_CATEGORY" && -d "$FASTFETCH_DIR/$TARGET_CATEGORY" ]]; then
+  SEARCH_DIRS=("$FASTFETCH_DIR/$TARGET_CATEGORY")
+else
+  for cat_name in "${VALID_CATEGORIES[@]}"; do
+    d="$FASTFETCH_DIR/$cat_name"
+    [[ -d "$d" ]] && SEARCH_DIRS+=("$d")
+  done
+fi
+
+AVAILABLE_LOGOS=()
+for dir in "${SEARCH_DIRS[@]}"; do
+  if [[ -d "$dir" ]]; then
+    while IFS= read -r -d '' file; do
+      [[ -s "$file" ]] && AVAILABLE_LOGOS+=("$file")
+    done < <(find "$dir" -maxdepth 1 -type f -name "*.txt" -print0 2>/dev/null)
+  fi
+done
+
+if [[ ${#AVAILABLE_LOGOS[@]} -eq 0 ]]; then
+  exec /usr/bin/fastfetch "${FILTERED_ARGS[@]}"
+fi
+
+LAST_LOGO=""
+[[ -f "$CACHE_FILE" ]] && LAST_LOGO=$(<"$CACHE_FILE")
+
+CANDIDATES=()
+for logo in "${AVAILABLE_LOGOS[@]}"; do
+  [[ "$logo" != "$LAST_LOGO" ]] && CANDIDATES+=("$logo")
+done
+
+[[ ${#CANDIDATES[@]} -eq 0 ]] && CANDIDATES=("${AVAILABLE_LOGOS[@]}")
+
+CHOSEN="${CANDIDATES[RANDOM % ${#CANDIDATES[@]}]}"
+echo "$CHOSEN" >"$CACHE_FILE" 2>/dev/null
+
+exec /usr/bin/fastfetch -l "$CHOSEN" "${FILTERED_ARGS[@]}"

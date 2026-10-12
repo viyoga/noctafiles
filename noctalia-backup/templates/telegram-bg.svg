@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <radialGradient id="nebula1" cx="25%" cy="25%" r="45%">
+      <stop offset="0%" stop-color="{{colors.surface_variant.default.hex}}" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="{{colors.surface.default.hex}}" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="nebula2" cx="75%" cy="70%" r="50%">
+      <stop offset="0%" stop-color="{{colors.surface_variant.default.hex}}" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="{{colors.surface.default.hex}}" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="starGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="{{colors.primary.default.hex}}" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="{{colors.primary.default.hex}}" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="{{colors.surface.default.hex}}"/>
+  <rect width="1920" height="1080" fill="url(#nebula1)"/>
+  <rect width="1920" height="1080" fill="url(#nebula2)"/>
+
+  <!-- Crescent Moon -->
+  <g transform="translate(1530, 180)">
+    <circle cx="0" cy="0" r="45" fill="{{colors.primary.default.hex}}" opacity="0.9"/>
+    <circle cx="18" cy="-12" r="38" fill="{{colors.surface.default.hex}}"/>
+    <circle cx="-15" cy="15" r="6" fill="{{colors.on_surface.default.hex}}" opacity="0.08"/>
+  </g>
+
+  <!-- Constellation Group 1 - Top Left -->
+  <g opacity="0.3">
+    <polyline points="120,160 180,200 220,180 280,220" stroke="{{colors.outline.default.hex}}" stroke-width="0.8" fill="none"/>
+    <circle cx="120" cy="160" r="2.5" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="180" cy="200" r="1.5" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="220" cy="180" r="2" fill="{{colors.secondary.default.hex}}"/>
+    <circle cx="280" cy="220" r="1.5" fill="{{colors.on_surface.default.hex}}"/>
+  </g>
+
+  <!-- Constellation Group 2 - Center -->
+  <g opacity="0.25">
+    <polyline points="780,450 840,420 900,460 960,430" stroke="{{colors.outline.default.hex}}" stroke-width="0.8" fill="none"/>
+    <polyline points="900,460 940,510 880,540" stroke="{{colors.outline.default.hex}}" stroke-width="0.8" fill="none"/>
+    <circle cx="780" cy="450" r="1.5" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="840" cy="420" r="2" fill="{{colors.tertiary.default.hex}}"/>
+    <circle cx="900" cy="460" r="2.5" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="960" cy="430" r="1.5" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="940" cy="510" r="1.5" fill="{{colors.secondary.default.hex}}"/>
+    <circle cx="880" cy="540" r="1.5" fill="{{colors.on_surface.default.hex}}"/>
+  </g>
+
+  <!-- Constellation Group 3 - Bottom Right -->
+  <g opacity="0.2">
+    <polyline points="1400,780 1460,810 1520,790 1580,830" stroke="{{colors.outline.default.hex}}" stroke-width="0.8" fill="none"/>
+    <circle cx="1400" cy="780" r="2" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="1460" cy="810" r="1.5" fill="{{colors.primary.default.hex}}"/>
+    <circle cx="1520" cy="790" r="2" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="1580" cy="830" r="1.5" fill="{{colors.on_surface.default.hex}}"/>
+  </g>
+
+  <!-- Twinkle Stars (4-point) -->
+  <g filter="url(#softGlow)">
+    <path d="M450,300 Q460,300 460,290 Q460,300 470,300 Q460,300 460,310 Q460,300 450,300Z" fill="{{colors.primary.default.hex}}" opacity="0.7"/>
+    <path d="M1100,200 Q1112,200 1112,188 Q1112,200 1124,200 Q1112,200 1112,212 Q1112,200 1100,200Z" fill="{{colors.secondary.default.hex}}" opacity="0.6"/>
+    <path d="M1580,480 Q1590,480 1590,470 Q1590,480 1600,480 Q1590,480 1590,490 Q1590,480 1580,480Z" fill="{{colors.on_surface.default.hex}}" opacity="0.5"/>
+    <path d="M680,680 Q690,680 690,670 Q690,680 700,680 Q690,680 690,690 Q690,680 680,680Z" fill="{{colors.tertiary.default.hex}}" opacity="0.6"/>
+    <path d="M350,750 Q358,750 358,742 Q358,750 366,750 Q358,750 358,758 Q358,750 350,750Z" fill="{{colors.primary.default.hex}}" opacity="0.5"/>
+    <path d="M1380,350 Q1388,350 1388,342 Q1388,350 1396,350 Q1388,350 1388,358 Q1388,350 1380,350Z" fill="{{colors.secondary.default.hex}}" opacity="0.5"/>
+    <path d="M750,150 Q758,150 758,142 Q758,150 766,150 Q758,150 758,158 Q758,150 750,150Z" fill="{{colors.on_surface.default.hex}}" opacity="0.4"/>
+    <path d="M1680,700 Q1688,700 1688,692 Q1688,700 1696,700 Q1688,700 1688,708 Q1688,700 1680,700Z" fill="{{colors.primary.default.hex}}" opacity="0.5"/>
+  </g>
+
+  <!-- Small Stars -->
+  <g opacity="0.8">
+    <circle cx="85" cy="95" r="1.5" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="240" cy="320" r="1" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="380" cy="150" r="2" fill="{{colors.secondary.default.hex}}"/>
+    <circle cx="520" cy="420" r="1" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="620" cy="280" r="1.5" fill="{{colors.primary.default.hex}}"/>
+    <circle cx="710" cy="520" r="1" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="860" cy="340" r="1.5" fill="{{colors.tertiary.default.hex}}"/>
+    <circle cx="1010" cy="550" r="1" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="1150" cy="300" r="1.5" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="1250" cy="460" r="1" fill="{{colors.primary.default.hex}}"/>
+    <circle cx="1360" cy="200" r="1.5" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="1480" cy="580" r="1" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="1620" cy="350" r="2" fill="{{colors.secondary.default.hex}}"/>
+    <circle cx="1740" cy="510" r="1" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="1840" cy="180" r="1.5" fill="{{colors.tertiary.default.hex}}"/>
+    <circle cx="150" cy="550" r="1" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="320" cy="620" r="1.5" fill="{{colors.primary.default.hex}}"/>
+    <circle cx="480" cy="510" r="1" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="570" cy="780" r="1.5" fill="{{colors.secondary.default.hex}}"/>
+    <circle cx="680" cy="920" r="1" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="820" cy="720" r="1.5" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="950" cy="850" r="1" fill="{{colors.primary.default.hex}}"/>
+    <circle cx="1050" cy="680" r="1.5" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="1180" cy="920" r="1" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="1300" cy="780" r="1.5" fill="{{colors.tertiary.default.hex}}"/>
+    <circle cx="1440" cy="900" r="1" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="1550" cy="720" r="1.5" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="1690" cy="880" r="1" fill="{{colors.secondary.default.hex}}"/>
+    <circle cx="1800" cy="650" r="1.5" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="190" cy="880" r="1" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="440" cy="960" r="1.5" fill="{{colors.primary.default.hex}}"/>
+    <circle cx="1200" cy="100" r="1" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="1420" cy="120" r="1.5" fill="{{colors.tertiary.default.hex}}"/>
+    <circle cx="920" cy="90" r="1" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="600" cy="50" r="1.5" fill="{{colors.secondary.default.hex}}"/>
+    <circle cx="1780" cy="100" r="1" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="60" cy="400" r="1.5" fill="{{colors.primary.default.hex}}"/>
+    <circle cx="1720" cy="260" r="1" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="1020" cy="160" r="1.5" fill="{{colors.on_surface.default.hex}}"/>
+    <circle cx="540" cy="190" r="1" fill="{{colors.tertiary.default.hex}}"/>
+  </g>
+
+  <!-- Doodle elements: decorative concentric circles -->
+  <g opacity="0.12">
+    <circle cx="1800" cy="900" r="60" stroke="{{colors.primary.default.hex}}" stroke-width="0.5" fill="none"/>
+    <circle cx="1800" cy="900" r="50" stroke="{{colors.primary.default.hex}}" stroke-width="0.3" fill="none"/>
+    <circle cx="1800" cy="900" r="70" stroke="{{colors.primary.default.hex}}" stroke-width="0.3" fill="none"/>
+    <circle cx="120" cy="900" r="40" stroke="{{colors.secondary.default.hex}}" stroke-width="0.5" fill="none"/>
+    <circle cx="120" cy="900" r="32" stroke="{{colors.secondary.default.hex}}" stroke-width="0.3" fill="none"/>
+    <circle cx="120" cy="900" r="48" stroke="{{colors.secondary.default.hex}}" stroke-width="0.3" fill="none"/>
+  </g>
+
+  <!-- Doodle: corner squiggles -->
+  <g opacity="0.08" fill="none" stroke="{{colors.on_surface.default.hex}}" stroke-width="0.8">
+    <path d="M40,40 Q80,20 100,60 Q120,100 160,80"/>
+    <path d="M50,50 Q90,30 110,70 Q130,110 170,90"/>
+    <path d="M1880,40 Q1840,20 1820,60 Q1800,100 1760,80"/>
+    <path d="M1870,50 Q1830,30 1810,70 Q1790,110 1750,90"/>
+    <path d="M40,1040 Q80,1060 100,1020 Q120,980 160,1000"/>
+    <path d="M1880,1040 Q1840,1060 1820,1020 Q1800,980 1760,1000"/>
+  </g>
+
+  <!-- Large bright star with glow -->
+  <g filter="url(#softGlow)">
+    <circle cx="960" cy="540" r="15" fill="url(#starGlow)"/>
+    <path d="M956,540 Q960,536 964,540 Q960,544 956,540Z" fill="{{colors.primary.default.hex}}" opacity="0.4"/>
+    <path d="M940,540 Q960,520 980,540 Q960,560 940,540Z" fill="{{colors.primary.default.hex}}" opacity="0.15"/>
+  </g>
+</svg>

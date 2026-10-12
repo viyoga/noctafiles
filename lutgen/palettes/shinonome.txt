@@ -1,0 +1,15 @@
+#000000
+#1a1d20
+#2d3339
+#424b54
+#97a7b5
+#b0c2d4
+#b38d97
+#c5baaf
+#c9a2ab
+#d5aca9
+#dcd5ce
+#e2c3c1
+#ebcfb2
+#f3dfca
+#fdfbf7

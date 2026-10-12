@@ -1,0 +1,157 @@
+@import "noctalia-colors.css";
+
+/* ══════════════════════════════════════════════════════════════════
+   LIBREWOLF USERCONTENT
+   1. Universal 0px Square Corners
+   2. Internal Pages (about:blank, about:preferences, about:addons)
+   3. Sidebery Sidebar (moz-extension://) Noctalia Theme
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Universal Square Corners ── */
+* {
+  border-radius: 0px !important;
+}
+
+/* Base pages */
+@-moz-document url("about:blank"), url("about:newtab"), url("about:home") {
+  body {
+    background-color: var(--noctalia-bg) !important;
+    color: var(--noctalia-fg) !important;
+  }
+}
+
+/* ── 2. Settings & Internal Pages (about:preferences, etc.) ── */
+@-moz-document url-prefix("about:preferences"),
+               url-prefix("about:addons"),
+               url-prefix("about:config"),
+               url-prefix("about:support"),
+               url-prefix("about:about") {
+  :root {
+    /* Backgrounds */
+    --background-color-canvas: var(--noctalia-bg) !important;
+    --background-color-box: var(--noctalia-surface-container) !important;
+    --background-color-box-info: var(--noctalia-surface-low) !important;
+
+    /* Text */
+    --text-color: var(--noctalia-fg) !important;
+    --text-color-deemphasized: var(--noctalia-fg-muted) !important;
+
+    /* Borders */
+    --border-color: var(--noctalia-border) !important;
+    --border-color-interactive: var(--noctalia-border) !important;
+    --border-color-selected: var(--noctalia-primary) !important;
+
+    /* Accent & Selection (replaces default purple/blue) */
+    --color-accent-primary: var(--noctalia-primary) !important;
+    --color-accent-primary-hover: var(--noctalia-primary) !important;
+    --color-accent-primary-active: var(--noctalia-primary) !important;
+    --color-accent-primary-selected: var(--noctalia-primary) !important;
+    --button-background-color-primary: var(--noctalia-primary) !important;
+    --button-background-color-primary-hover: var(--noctalia-surface-variant) !important;
+    --button-background-color-primary-active: var(--noctalia-surface-variant) !important;
+    --button-text-color-primary: var(--noctalia-on-primary) !important;
+
+    /* Links & Focus */
+    --link-color: var(--noctalia-primary) !important;
+    --link-color-hover: var(--noctalia-primary) !important;
+    --link-color-active: var(--noctalia-primary) !important;
+    --focus-outline-color: var(--noctalia-primary) !important;
+    accent-color: var(--noctalia-primary) !important;
+
+    /* Button & Category Hover / Active Tokens (eliminates default #75669f violet) */
+    --button-background-color: transparent !important;
+    --button-background-color-hover: var(--noctalia-surface-variant) !important;
+    --button-background-color-active: var(--noctalia-surface-container) !important;
+    --button-background-color-ghost-hover: var(--noctalia-surface-variant) !important;
+    --button-background-color-ghost-active: var(--noctalia-surface-container) !important;
+    --page-nav-button-background-color: transparent !important;
+    --page-nav-button-background-color-hover: var(--noctalia-surface-variant) !important;
+    --page-nav-button-background-color-active: var(--noctalia-surface-container) !important;
+    --page-nav-button-background-color-selected: var(--noctalia-primary) !important;
+    --page-nav-button-text-color: var(--noctalia-fg) !important;
+    --page-nav-button-text-color-hover: var(--noctalia-fg) !important;
+    --page-nav-button-text-color-selected: var(--noctalia-on-primary) !important;
+    --page-nav-button-indicator-background-color: var(--noctalia-primary) !important;
+    --page-nav-button-border-radius: 0px !important;
+
+    /* Legacy in-content tokens */
+    --in-content-page-background: var(--noctalia-bg) !important;
+    --in-content-page-color: var(--noctalia-fg) !important;
+    --in-content-text-color: var(--noctalia-fg) !important;
+    --in-content-box-background: var(--noctalia-surface-container) !important;
+    --in-content-box-info-background: var(--noctalia-surface-low) !important;
+    --in-content-border-color: var(--noctalia-border) !important;
+    --in-content-accent-color: var(--noctalia-primary) !important;
+    --in-content-accent-color-active: var(--noctalia-primary) !important;
+    --in-content-accent-color-hover: var(--noctalia-primary) !important;
+    --in-content-primary-button-background: var(--noctalia-primary) !important;
+    --in-content-primary-button-text-color: var(--noctalia-on-primary) !important;
+  }
+
+  body {
+    background-color: var(--noctalia-bg) !important;
+    color: var(--noctalia-fg) !important;
+  }
+
+  /* Traditional sidebar category selection in Preferences */
+  #categories > .category[selected],
+  #categories > .category.selected {
+    color: var(--noctalia-primary) !important;
+  }
+
+  #categories > .category[selected] > .category-icon,
+  #categories > .category.selected > .category-icon {
+    fill: var(--noctalia-primary) !important;
+  }
+
+  #categories > .category:hover {
+    background-color: var(--noctalia-surface-variant) !important;
+  }
+
+  /* Redesigned preferences moz-page-nav-button items */
+  moz-page-nav-button button:hover:not([selected]) {
+    background-color: var(--noctalia-surface-variant) !important;
+    color: var(--noctalia-fg) !important;
+  }
+
+  moz-page-nav-button[selected] button,
+  moz-page-nav-button.selected button {
+    background-color: var(--noctalia-primary) !important;
+    color: var(--noctalia-on-primary) !important;
+  }
+
+  /* Search input inside preferences */
+  #searchInput,
+  .search-box {
+    background-color: var(--noctalia-surface-container) !important;
+    color: var(--noctalia-fg) !important;
+    border-color: var(--noctalia-border) !important;
+  }
+}
+
+/* ── 3. Sidebery Sidebar (moz-extension://) ── */
+@-moz-document url-prefix("moz-extension://ba60da45-46d7-4251-b393-5448e000efc8/"),
+               url-prefix("moz-extension://") {
+  /* Enforce pure 0px square corners across all Sidebery widgets */
+  #root,
+  body {
+    --tabs-border-radius: 0px !important;
+    --general-border-radius: 0px !important;
+    --btn-border-radius: 0px !important;
+    --nav-btn-border-radius: 0px !important;
+    --ctx-menu-border-radius: 0px !important;
+  }
+
+  * {
+    border-radius: 0px !important;
+  }
+
+  /* Active tab accent indicator */
+  .Tab[data-active="true"] {
+    border-left: 2px solid var(--s-accent, var(--accent, var(--noctalia-primary))) !important;
+  }
+
+  .NavigationBar .nav-item[data-active="true"] {
+    border-bottom: 2px solid var(--s-accent, var(--accent, var(--noctalia-primary))) !important;
+  }
+}

@@ -1,0 +1,314 @@
+/* ══════════════════════════════════════════════════════════════════
+   LIBREWOLF CUSTOM RICE
+   1. Universal 0px Square Corners (Pywalfox cannot do border-radius)
+   2. Clean URL Bar (Hide extension name/pill on startpage)
+   3. Clean Sidebery Integration (Collapse native tabs & sidebar header)
+   4. Navbar Layout & Centered URL Bar (with Megabar alignment lock)
+   
+   * All colors, themes, backgrounds, popups, and toolbar styles
+     are dynamically managed by Pywalfox via browser.theme API.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Hide Extension Identity Badge in URL Bar ── */
+#identity-box.extensionPage,
+#identity-box[pageproxystate="valid"].extensionPage,
+#urlbar[pageproxystate="valid"] #identity-box.extensionPage,
+#identity-box.extensionPage *,
+#urlbar-label-box {
+  display: none !important;
+  visibility: collapse !important;
+  width: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* ── 2. Universal 0px Square Corners Everywhere ── */
+:root {
+  --toolbarbutton-border-radius: 0px !important;
+  --tab-border-radius: 0px !important;
+  --urlbar-border-radius: 0px !important;
+  --arrowpanel-border-radius: 0px !important;
+  --panel-border-radius: 0px !important;
+  --button-border-radius: 0px !important;
+  --general-border-radius: 0px !important;
+  --menupopup-border-radius: 0px !important;
+  --urlbar-background-overhang-open: 0px !important;
+}
+
+/* Global reset for every chrome element */
+* {
+  border-radius: 0px !important;
+}
+
+/* URL bar & Search bar */
+#urlbar,
+#urlbar-background,
+#urlbar-input-container,
+.urlbarView,
+.urlbarView-body-inner,
+.urlbarView-row,
+#searchbar {
+  border-radius: 0px !important;
+}
+
+/* Tabs & Vertical Tabs */
+.tabbrowser-tab,
+.tab-background,
+.tab-content,
+.tab-stack,
+.tab-close-button,
+#vertical-tabs,
+#vertical-tabs tab,
+#vertical-tabs .tab-background,
+#vertical-tabs-pane,
+#tabbrowser-tabs {
+  border-radius: 0px !important;
+}
+
+/* Toolbar Buttons & Controls */
+toolbarbutton,
+.toolbarbutton-1,
+.toolbarbutton-icon,
+.toolbarbutton-badge-stack,
+#nav-bar toolbarbutton,
+#TabsToolbar toolbarbutton {
+  border-radius: 0px !important;
+}
+
+/* Menus, Popups, Panels & Dropdowns */
+menupopup,
+panel,
+panel::part(content),
+menupopup::part(content),
+.panel-arrowcontent,
+tooltip,
+menu,
+menuitem,
+menulist,
+.panel-subview-body {
+  border-radius: 0px !important;
+}
+
+/* Findbar & In-browser notifications */
+findbar,
+#findbar-textbox-wrapper,
+notification-message,
+.notificationbox-stack {
+  border-radius: 0px !important;
+}
+
+/* Sidebar & Containers */
+#sidebar-box,
+#sidebar-header,
+#sidebar,
+#sidebar-splitter {
+  border-radius: 0px !important;
+}
+
+/* ── 3. Clean Sidebery Integration ── */
+/* Hide native tab bar (top horizontal tabs or native vertical tabs) */
+#TabsToolbar {
+  visibility: collapse !important;
+}
+
+/* Hide native "Sidebery  ✕" sidebar header */
+#sidebar-header {
+  display: none !important;
+}
+
+/* Hide Firefox 131+ sidebar launcher icon strip */
+#sidebar-main > .sidebar-launcher,
+#sidebar-main > [part="launcher"],
+#sidebar-launcher,
+#sidebar-switcher-target {
+  display: none !important;
+  width: 0px !important;
+  min-width: 0px !important;
+}
+
+/* Minimal 1px sidebar divider */
+#sidebar-splitter {
+  width: 1px !important;
+  border: none !important;
+}
+
+/* Elevate sidebar to top bar level into empty left space */
+#sidebar-box,
+#sidebar-main {
+  margin-top: -36px !important;
+  z-index: 10 !important;
+}
+
+/* ── 4. Navbar & URL Bar Polish ── */
+/* Hide back and forward navigation buttons */
+#back-button,
+#forward-button {
+  display: none !important;
+}
+
+/* Hide bookmark star button in URL bar for clean minimalism */
+#star-button-box {
+  display: none !important;
+}
+
+/* Collapse flexible spaces & spacers so extensions sit flush at the far left */
+toolbarspring,
+[id^="customizableui-special-spring"],
+#vertical-spacer {
+  display: none !important;
+  width: 0px !important;
+  max-width: 0px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#nav-bar-customization-target {
+  padding-inline-start: 6px !important;
+}
+
+/* Remove harsh navbar borders */
+#nav-bar {
+  position: relative !important;
+  border-top: none !important;
+  box-shadow: none !important;
+}
+
+/* Truly center the URL bar across the full screen/navbar (50/50 balance) */
+#urlbar-container {
+  position: absolute !important;
+  left: calc(50% - 360px) !important;
+  width: 720px !important;
+  max-width: 720px !important;
+  height: 32px !important;
+  top: calc(50% - 16px) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  z-index: 10 !important;
+}
+
+#urlbar {
+  --urlbar-height: 32px !important;
+  --urlbar-min-height: 32px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Prevent breakout from shifting or detaching the URL bar */
+#urlbar,
+#urlbar[breakout],
+#urlbar[breakout][breakout-extend] {
+  top: 0px !important;
+  left: 0px !important;
+  right: 0px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0px !important;
+  margin-inline: 0px !important;
+  padding: 0px !important;
+  box-shadow: none !important;
+}
+
+#urlbar-background,
+.urlbar-background,
+.urlbar[popover-open] > .urlbar-background,
+#urlbar[popover-open] > .urlbar-background,
+#urlbar[breakout] > #urlbar-background,
+#urlbar[breakout][breakout-extend] > #urlbar-background,
+#urlbar[breakout] > .urlbar-background,
+#urlbar[breakout][breakout-extend] > .urlbar-background {
+  top: 0px !important;
+  left: 0px !important;
+  right: 2px !important;
+  bottom: 0px !important;
+  inset-block: 0px !important;
+  inset-inline-start: 0px !important;
+  inset-inline-end: 2px !important;
+  inset-inline: 0px 2px !important;
+  margin: 0px !important;
+  margin-inline: 0px !important;
+  width: calc(100% - 2px) !important;
+  max-width: calc(100% - 2px) !important;
+  height: 32px !important;
+  clip-path: none !important;
+  animation: none !important;
+  box-shadow: none !important;
+}
+
+.urlbar:is([focused], [open]) > .urlbar-background,
+#urlbar:is([focused], [open]) > #urlbar-background,
+.urlbar[popover-open] > .urlbar-background,
+#urlbar[popover-open] > .urlbar-background {
+  background-color: var(--urlbar-background-color-focus, var(--toolbar-field-focus-background-color)) !important;
+}
+
+.urlbarView-background {
+  left: 1px !important;
+  right: 2px !important;
+  inset-inline-start: 1px !important;
+  inset-inline-end: 2px !important;
+  inset-inline: 1px 2px !important;
+  width: calc(100% - 3px) !important;
+  max-width: calc(100% - 3px) !important;
+  box-shadow: none !important;
+}
+
+.urlbar-input-container,
+#urlbar-input-container,
+.urlbar[popover-open] > .urlbar-input-container,
+#urlbar[popover-open] > .urlbar-input-container,
+#urlbar[breakout] > .urlbar-input-container,
+#urlbar[breakout][breakout-extend] > .urlbar-input-container,
+#urlbar[breakout] > #urlbar-input-container,
+#urlbar[breakout][breakout-extend] > #urlbar-input-container {
+  height: 32px !important;
+  padding-block: 0px !important;
+  padding-inline: 0px !important;
+  margin: 0px !important;
+  margin-inline: 0px !important;
+}
+
+/* Ensure autocomplete popup results align 1:1 directly beneath URL bar input */
+.urlbarView {
+  left: 1px !important;
+  right: 2px !important;
+  width: calc(100% - 3px) !important;
+  max-width: calc(100% - 3px) !important;
+  margin-inline: 0px !important;
+  border-top: none !important;
+  border-radius: 0px !important;
+}
+
+/* Stretch all URL bar left elements (search mode switcher, identity badge, etc.) flush to top/bottom */
+.searchmode-switcher,
+#identity-box,
+#identity-box > .identity-box-button,
+#identity-box[pageproxystate="valid"] > .identity-box-button,
+#identity-icon-box,
+#identity-permission-box,
+#urlbar-search-mode-indicator,
+#trust-icon-container,
+#tracking-protection-icon-container,
+#urlbar-label-box,
+#remote-control-box {
+  height: calc(var(--urlbar-basic-component-size) + 7px) !important;
+  min-height: calc(var(--urlbar-basic-component-size) + 7px) !important;
+  margin-block-start: -2px !important;
+  margin-block-end: -3px !important;
+}
+
+.searchmode-switcher::part(button) {
+  height: 100% !important;
+  min-height: 100% !important;
+}
+
+.urlbarView-body-inner {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Center search placeholder when idle, left-align when typing */
+#urlbar:not([focused]) #urlbar-input {
+  text-align: center !important;
+}

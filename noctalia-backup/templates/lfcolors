@@ -1,0 +1,31 @@
+# Noctalia template for lf colors
+# {{colors.primary.default.hex}} → "#F2A65A" → R:242 G:166 B:90
+# Format: filetype  38;2;R;G;B   (foreground only)
+
+# Hex substitution values from Noctalia:
+#   primary:    {{colors.primary.default.hex}}
+#   on_primary: {{colors.on_primary.default.hex}}
+#   secondary:  {{colors.secondary.default.hex}}
+#   surface:    {{colors.surface.default.hex}}
+#   on_surface: {{colors.on_surface.default.hex}}
+#   surface_variant:   {{colors.surface_variant.default.hex}}
+#   on_surface_variant: {{colors.on_surface_variant.default.hex}}
+#   error:      {{colors.error.default.hex}}
+#   on_error:   {{colors.on_error.default.hex}}
+#   outline:    {{colors.outline.default.hex}}
+
+# File types
+ln      38;2;SECONDARY_R;SECONDARY_G;SECONDARY_B    # LINK
+or      38;2;ERROR_R;ERROR_G;ERROR_B                 # ORPHAN
+tw      38;2;PRIMARY_R;PRIMARY_G;PRIMARY_B           # STICKY_OTHER_WRITABLE
+ow      38;2;PRIMARY_R;PRIMARY_G;PRIMARY_B           # OTHER_WRITABLE
+st      38;2;PRIMARY_R;PRIMARY_G;PRIMARY_B           # STICKY
+di      38;2;PRIMARY_R;PRIMARY_G;PRIMARY_B           # DIR
+pi      38;2;ON_SURFACE_VARIANT_R;ON_SURFACE_VARIANT_G;ON_SURFACE_VARIANT_B  # FIFO
+so      38;2;SECONDARY_R;SECONDARY_G;SECONDARY_B     # SOCK
+bd      38;2;ON_SURFACE_VARIANT_R;ON_SURFACE_VARIANT_G;ON_SURFACE_VARIANT_B  # BLK
+cd      38;2;ON_SURFACE_VARIANT_R;ON_SURFACE_VARIANT_G;ON_SURFACE_VARIANT_B  # CHR
+su      38;2;SECONDARY_R;SECONDARY_G;SECONDARY_B     # SETUID
+sg      38;2;SECONDARY_R;SECONDARY_G;SECONDARY_B     # SETGID
+ex      38;2;SECONDARY_R;SECONDARY_G;SECONDARY_B     # EXEC
+fi      38;2;ON_SURFACE_R;ON_SURFACE_G;ON_SURFACE_B  # FILE

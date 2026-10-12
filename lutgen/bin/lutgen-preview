@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+file="$1"
+file="${file/#\~/$HOME}"
+[[ "$file" != /* ]] && file="$HOME/Pictures/$file"
+
+[[ ! -f "$file" ]] && exit 0
+
+# Check if running inside fzf preview
+if [[ -n "$FZF_PREVIEW_COLUMNS" && -n "$FZF_PREVIEW_LINES" ]]; then
+    dim="${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES}"
+
+    if [[ -n "$KITTY_WINDOW_ID" ]] && command -v kitten > /dev/null 2>&1; then
+        out=$(kitten icat --clear --transfer-mode=memory --unicode-placeholder --stdin=no --place="$dim@0x0" "$file" 2>/dev/null | sed '$d' | sed $'$s/$/\e[m/')
+        if [[ -n "$out" ]]; then
+            printf "%s\n" "$out"
+            exit 0
+        fi
+    fi
+
+    if command -v chafa > /dev/null 2>&1; then
+        chafa --probe=off -s "$dim" "$file" 2>/dev/null
+        echo
+        exit 0
+    fi
+else
+    # Normal terminal output (outside fzf)
+    if [[ -n "$KITTY_WINDOW_ID" ]] && command -v kitten > /dev/null 2>&1; then
+        kitten icat "$file" 2>/dev/null && exit 0
+    fi
+
+    if command -v chafa > /dev/null 2>&1; then
+        chafa --probe=off -f kitty "$file" 2>/dev/null && exit 0
+        chafa --probe=off "$file" 2>/dev/null
+        echo
+        exit 0
+    fi
+fi

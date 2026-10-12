@@ -1,0 +1,318 @@
+[storage]
+key_source = "file"
+key_file = "/home/kabir/.local/state/noctalia/storage-key"
+
+[theme]
+mode = "dark"
+source = "custom"
+custom_palette = "caelus"
+
+[shell]
+font_family = "Iosevka NF"
+ui_scale = 1.0
+
+[shell.panel]
+transparency_mode = "solid"
+borders = false
+shadow = true 
+
+[bar.main]
+position = "top"
+thickness = 32
+radius = 0
+background_opacity = 1.0
+font_family = "Iosevka NF"
+margin_ends = 0
+margin_edge = 0
+
+start = ["group:g_workspaces"]
+center = ["cat_2", "media", "audio_visualizer"]
+end = ["clock"]
+
+[widget.clock]
+capsule = false
+capsule_opacity = 0.0
+color = "secondary"
+format = "{:%H:%M | %a %d}" 
+[theme.templates]
+enable_builtin_templates = true
+enable_community_templates = true
+builtin_ids = ["kitty", "btop", "cava", "qt", "kcolorscheme"]
+community_ids = ["discord", "zen-browser", "papirus-icons", "neovim", "bat", "obs"]
+user_ids = ["spicetify-text", "telegram_bg", "telegram_theme", "startpage", "mist-newtab", "prettyzap", "yazi", "zapfast", "serein"]
+
+[theme.templates.user.spicetify-text]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/spicetify-text.ini"
+output_path = "$XDG_CONFIG_HOME/spicetify/Themes/text/color.ini"
+post_hook = "spicetify -q apply --no-restart"
+
+[theme.templates.user.gtk3]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/gtk3.css"
+output_path = "$XDG_CONFIG_HOME/gtk-3.0/gtk.css"
+
+[theme.templates.user.gtk4]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/gtk4.css"
+output_path = "$XDG_CONFIG_HOME/gtk-4.0/gtk.css"
+post_hook = "systemctl --user stop xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal 2>/dev/null; pkill -f nautilus 2>/dev/null; pkill -f polkit-gnome-authentication-agent 2>/dev/null; sleep 1; nohup setsid /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 </dev/null >/dev/null 2>&1 & true"
+
+[theme.templates.user.hyprland]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/hyprland/hyprland.lua"
+output_path = "$XDG_CONFIG_HOME/hypr/noctalia.lua"
+post_hook = "bash '$XDG_CONFIG_HOME/noctalia/templates/hyprland/apply.sh' apply"
+
+[theme.templates.user.startpage]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/startpage.css"
+output_path = "$XDG_CONFIG_HOME/startpage/style.css"
+
+[theme.templates.user.yazi]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/yazi.toml"
+output_path = "$XDG_CONFIG_HOME/yazi/flavors/noctalia.yazi/flavor.toml"
+
+[theme.templates.user.mist-newtab]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/mist-newtab.css"
+output_path = "/home/kabir/web-project/abeyant-newtab-extension/css/noctalia-colors.css"
+post_hook = "cp /home/kabir/web-project/abeyant-newtab-extension/css/noctalia-colors.css /home/kabir/web-project/sonder-newtab-extension/css/noctalia-colors.css 2>/dev/null; /home/kabir/web-project/sonder-newtab-extension/package.sh >/dev/null 2>&1 || true"
+
+[theme.templates.user.prettyzap]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/prettyzap.toml"
+output_path = "$XDG_CONFIG_HOME/prettyzap/colors.toml"
+post_hook = "bash '$XDG_CONFIG_HOME/noctalia/templates/prettyzap-font.sh'"
+
+[theme.templates.user.fzf]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/fzf.sh"
+output_path = "$XDG_CONFIG_HOME/shell/fzf-colors"
+
+[theme.templates.user.rmpc]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/rmpc.ron"
+output_path = "$XDG_CONFIG_HOME/rmpc/themes/custom.ron"
+
+[theme.templates.user.ghgrab]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/ghgrab.toml"
+output_path = "$XDG_CONFIG_HOME/ghgrab/theme.toml"
+
+[theme.templates.user.modernz]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/modernz.conf"
+output_path = "$XDG_CONFIG_HOME/mpv/script-opts/modernz.conf"
+
+[theme.templates.user.mpv_colors]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/mpv-colors.conf"
+output_path = "$XDG_CONFIG_HOME/mpv/mpv-colors.conf"
+
+[theme.templates.user.cava]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/cava.ini"
+output_path = "$XDG_CONFIG_HOME/cava/themes/noctalia"
+
+[theme.templates.user.obsidian]
+input_path = "/home/kabir/.local/state/noctalia/community-templates/obsidian/obsidian.css"
+output_path = "/home/kabir/Documents/Obsidian-vaults/kittybox/.obsidian/snippets/noctalia.css"
+post_hook = "python3 /home/kabir/.config/noctalia/templates/enable-obsidian-snippet.sh"
+
+[theme.templates.user.telegram_bg]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/telegram-bg.svg"
+output_path = "/tmp/noctalia-telegram/background.svg"
+pre_hook = "mkdir -p /tmp/noctalia-telegram"
+post_hook = "magick /tmp/noctalia-telegram/background.svg /tmp/noctalia-telegram/background.jpg"
+
+[theme.templates.user.telegram_theme]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/telegram.tdesktop-theme"
+output_path = "/tmp/noctalia-telegram/colors.tdesktop-theme"
+post_hook = "cd /tmp/noctalia-telegram && zip -qj $XDG_CONFIG_HOME/telegram-desktop/themes/noctalia.tdesktop-theme colors.tdesktop-theme background.jpg"
+
+[theme.templates.user.helium]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/helium-color.json"
+output_path = "/etc/chromium/policies/managed/color.json"
+post_hook = "pgrep -x helium >/dev/null 2>&1 && timeout 5 helium-browser --refresh-platform-policy --no-startup-window >/dev/null 2>&1 &"
+
+[theme.templates.user.brave]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/brave-color.json"
+output_path = "/etc/brave/policies/managed/color.json"
+
+[theme.templates.user.cmatrix]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/cmatrix.sh"
+output_path = "~/.local/bin/cmatrix-noctalia"
+post_hook = "chmod +x ~/.local/bin/cmatrix-noctalia"
+
+[theme.templates.user.zapfast]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/zapfast.json"
+output_path = "$XDG_CONFIG_HOME/zapfast/themes/noctalia.json"
+
+[theme.templates.user.zn]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/zn-theme.css"
+output_path = "$XDG_CONFIG_HOME/zennotes/themes/noctalia/theme.css"
+pre_hook = "mkdir -p $XDG_CONFIG_HOME/zennotes/themes/noctalia"
+
+[theme.templates.user.serein]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/serein.json"
+output_path = "$XDG_CONFIG_HOME/serein/noctalia.serein-extension"
+pre_hook = "mkdir -p $XDG_CONFIG_HOME/serein"
+
+[theme.templates.user.sonora]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/sonora-overrides.json"
+output_path = "$XDG_CONFIG_HOME/noctalia/.sonora-overrides.rendered.json"
+pre_hook = "true"
+post_hook = "python3 $XDG_CONFIG_HOME/noctalia/scripts/sonora-theme-merge.py"
+
+[notification]
+show_app_name = false
+
+[notification.filter.default-timeout]
+match_content = ".*"
+override_duration = 2000
+
+[osd]
+position = "top_center"
+scale = 1.0
+
+[shell.launcher.dmenu.entry.s]
+label = "Web Search"
+prefix = "s"
+glyph = "world"
+global = false
+freeform = true
+command = """
+  printf "plain <query>  —  Google (default)\\ngg <query>  —  Google\\ndd <query>  —  DuckDuckGo\\nbr <query>  —  Brave\\nss <query>  —  Startpage\\n<domain>.com  —  direct\\n"
+"""
+exec = """
+  sel="{query}"
+  case "$sel" in
+    *.com)              xdg-open "https://${sel%/}" ;;
+    "gg "*|"plain "*)   xdg-open "https://www.google.com/search?q=$(printf '%s' "${sel#* }" | jq -sRr @uri)" ;;
+    "dd "*)             xdg-open "https://duckduckgo.com/?q=$(printf '%s' "${sel#dd }" | jq -sRr @uri)" ;;
+    "br "*)             xdg-open "https://search.brave.com/search?q=$(printf '%s' "${sel#br }" | jq -sRr @uri)" ;;
+    "ss "*)             xdg-open "https://www.startpage.com/sp/search?query=$(printf '%s' "${sel#ss }" | jq -sRr @uri)" ;;
+    *)                  xdg-open "https://www.google.com/search?q=$(printf '%s' "$sel" | jq -sRr @uri)" ;;
+  esac
+"""
+
+[shell.launcher.dmenu.entry.hypr]
+label = "Hyprland Layout"
+prefix = "hypr"
+glyph = "layout"
+global = false
+freeform = false
+command = """
+  printf "Dwindle\\nScrolling"
+"""
+exec = """
+  case "{selection}" in
+    Dwindle) hyprctl eval "hl.config({general={layout='dwindle'}})" && notify-send "Hyprland" "Layout: Dwindle" ;;
+    Scrolling) hyprctl eval "hl.config({general={layout='scrolling'}})" && notify-send "Hyprland" "Layout: Scrolling" ;;
+  esac
+"""
+
+[shell.launcher.dmenu.entry.note]
+label = "Notes"
+prefix = "note"
+glyph = "file-text"
+global = false
+freeform = true
+command = """
+  awk '{print NR "\t" $0}' /home/kabir/Documents/Obsidian-vaults/kittybox/todo.md
+"""
+exec = """
+  line=$(echo "{selection}" | awk -F'\t' '{if ($1 ~ /^[0-9]+$/) print $1}')
+  if [ -n "$line" ]; then
+    obsidian "obsidian://open?vault=kittybox&file=todo.md&line=$line" 2>/dev/null || kitty -e nvim "+$line" /home/kabir/Documents/Obsidian-vaults/kittybox/todo.md
+  else
+    echo "{query}" >> /home/kabir/Documents/Obsidian-vaults/kittybox/todo.md
+    notify-send "Note saved" "Added: {query}"
+  fi
+"""
+
+[shell.launcher.dmenu.entry.vault]
+label = "Vault Browser"
+prefix = "vault"
+glyph = "folder"
+global = false
+freeform = true
+command = """
+  find /home/kabir/Documents/Obsidian-vaults/kittybox -name '*.md' -printf '%P\\n'
+"""
+exec = """
+  sel="{selection}"
+  vault="/home/kabir/Documents/Obsidian-vaults/kittybox"
+  filepart=$(echo "$sel" | cut -d' ' -f1)
+  content=$(echo "$sel" | cut -d' ' -f2-)
+  if echo "$filepart" | grep -q '\\.md$' && [ -n "$content" ]; then
+    echo "$content" > "$vault/$filepart"
+    notify-send "Vault" "Written to $filepart"
+  elif [ -f "$vault/$sel" ]; then
+    obsidian "obsidian://open?vault=kittybox&file=$sel" 2>/dev/null || kitty -e nvim "$vault/$sel"
+  fi
+"""
+
+[shell.launcher.dmenu.entry.shaders]
+label = "Screen Shaders"
+prefix = "shaders"
+glyph = "sparkles"
+global = false
+freeform = false
+command = """
+  printf "Off\\n"; ls ~/.config/hypr/shaders/*.glsl | xargs -n1 basename | sed 's/\\.glsl$//'
+"""
+exec = """
+  "$HOME/.config/hypr/scripts/shader-apply.sh" "$(echo "{selection}" | sed 's/^Off$/off/')"
+"""
+
+[hooks]
+colors_changed = "/home/kabir/.config/noctalia/scripts/opencode-reload.sh"
+wallpaper_changed = "noctalia msg theme-mode-set dark"
+
+[shell.screenshot]
+# Region/fullscreen captures flow straight into the annotate tool
+annotate = true
+
+
+[widget.media]
+art_size = 16.0
+artist_first = true
+capsule = false
+capsule_opacity = 0.0
+color = "tertiary"
+hide_album_art = true
+hide_when_no_media = true
+max_length = 260.0
+min_length = 0.0
+show_progress = false
+title_scroll = "none"
+type = "media" 
+[shell.mpris]
+blacklist = ["kdeconnect", "brave", "brave-origin-nightly", "chromium", "chrome", "firefox", "zen", "librewolf", "floorp", "plasma-browser-integration", "vesktop", "discord", "youtube", "YouTube"]
+
+[widget.text-W]
+type = "text"
+text = "W:"
+color = "primary"
+capsule = false
+capsule_opacity = 0.0
+
+[widget.text-parenthesis-left]
+text = "("
+type = "text"
+color = "on_surface_variant"
+
+[widget.text-parenthesis-right]
+text = ")"
+type = "text"
+color = "on_surface_variant"
+[widget.cat_2]
+audio_spectrum = true
+capsule = false
+capsule_opacity = 0.0
+color = "primary"
+enabled = true
+font_weight = 700
+icon_color = "primary"
+scale = 1.0
+tappy_mode = true
+type = "noctalia/bongocat:cat"
+use_mpris_filter = true
+[widget.audio_visualizer]
+bands = 10
+capsule = false
+capsule_opacity = 0.0
+color_1 = "tertiary"
+color_2 = "primary"
+scale = 1.0
+type = "audio_visualizer"
+width = 44
