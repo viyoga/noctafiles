@@ -455,7 +455,7 @@ post_hook = "spicetify -q apply --no-restart"
 [theme]
 builtin = "Rosé Pine"
 community_palette = "Seoul256 Hard"
-custom_palette = "penguins-material"
+custom_palette = "evergreen"
 mode = "dark"
 source = "custom"
 wallpaper_scheme = "soft"
@@ -618,13 +618,13 @@ directory_dark = "/home/kabir/Pictures/noctalia-walls"
 transition = [ "fade", "wipe" ]
 
     [wallpaper.default]
-    path = "/home/kabir/Pictures/noctalia-walls/penguins-material/penguins-material-3.png"
+    path = "/home/kabir/Pictures/noctalia-walls/wallis/Walls/top walls/colourize/wallhaven-y8vlyk_1920x1080.png"
 
     [wallpaper.last]
-    path = "/home/kabir/Pictures/noctalia-walls/penguins-material/penguins-material-3.png"
+    path = "/home/kabir/Pictures/noctalia-walls/wallis/Walls/top walls/colourize/wallhaven-y8vlyk_1920x1080.png"
 
     [wallpaper.monitors.HDMI-A-1]
-    path = "/home/kabir/Pictures/noctalia-walls/penguins-material/penguins-material-3.png"
+    path = "/home/kabir/Pictures/noctalia-walls/wallis/Walls/top walls/colourize/wallhaven-y8vlyk_1920x1080.png"
 
     [[wallpaper.favorite]]
     custom_palette = "bluefish"
