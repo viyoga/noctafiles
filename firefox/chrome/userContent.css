@@ -140,18 +140,48 @@
     --btn-border-radius: 0px !important;
     --nav-btn-border-radius: 0px !important;
     --ctx-menu-border-radius: 0px !important;
+    /* Kill the CSS variables that draw the indicator strips */
+    --nav-btn-active-shadow: none !important;
+    --tabs-activated-shadow: none !important;
   }
 
   * {
     border-radius: 0px !important;
   }
 
-  /* Active tab accent indicator */
-  .Tab[data-active="true"] {
-    border-left: 2px solid var(--s-accent, var(--accent, var(--noctalia-primary))) !important;
+  /* ── Remove horizontal strip under active nav/container icons ── */
+  .NavigationBar .nav-item,
+  .NavigationBar .nav-item[data-active="true"] {
+    box-shadow: none !important;
+    border: none !important;
+    border-bottom: none !important;
+  }
+  .NavigationBar .nav-item:before,
+  .NavigationBar .nav-item:after {
+    box-shadow: none !important;
+    border: none !important;
+    display: none !important;
   }
 
-  .NavigationBar .nav-item[data-active="true"] {
-    border-bottom: 2px solid var(--s-accent, var(--accent, var(--noctalia-primary))) !important;
+  /* ── Remove vertical container-color strip beside tabs ── */
+  .Tab .ctx,
+  .Tab .containerMark,
+  .Tab .color-layer {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    max-width: 0 !important;
+  }
+
+  /* ── Remove active tab left shadow / border ── */
+  .Tab[data-active="true"] .body {
+    box-shadow: none !important;
+    border-left: none !important;
+  }
+  .Tab[data-active="true"] .body:before,
+  .Tab[data-active="true"] .body:after {
+    box-shadow: none !important;
+    border: none !important;
+    display: none !important;
   }
 }
