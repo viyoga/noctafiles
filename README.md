@@ -29,6 +29,7 @@
 | [`dict-cli/`](./dict-cli) | **dict** | Zero-dependency lightning-fast terminal dictionary with offline cache, IPA phonetics, suggestions, and audio. | Node.js (Vanilla) |
 | [`cmatrix-noctalia/`](./cmatrix-noctalia) | **cmatrix-noctalia** | Real-time desktop palette integration wrapper using terminal OSC 4 color remapping for `cmatrix`. | Bash / Template |
 | [`lutgen/`](./lutgen) | **lutgen-zsh** | Interactive wallpaper recoloring utility with fzf multi-palette selector, Kitty graphics preview, and 40 custom palettes. | Zsh / Rust CLI |
+| [`shaders/`](./shaders) | **Hyprland Screen Shaders** | 17 post-processing GLSL screen shaders (CRT, sketch, wobble, chromatic aberration, etc.) with `/shaders` Noctalia launcher integration. | GLSL / Bash |
 
 ---
 
@@ -87,6 +88,17 @@ lutgen ~/Pictures/wallpapers
 ```
 - Recolor wallpapers into 40+ Noctalia-matched color palettes.
 - Multi-select palettes via `Tab` in `fzf` with non-destructive sequential naming (`<palette>-1.png`, `<palette>-2.png`).
+
+### 🌌 6. [Hyprland Screen Shaders](./shaders)
+```bash
+cd shaders
+./install.sh
+# In terminal:
+shader-apply.sh 04_crt   # Turn on CRT screen shader
+shader-apply.sh off      # Turn off active shader
+```
+- 17 GLSL post-processing shaders (CRT, sketch, newspaper, wobble, pixelated, chromatic aberration, etc.).
+- Integrated with Noctalia launcher: type `/shaders` to switch between presets live.
 
 ---
 
